@@ -2,14 +2,12 @@
 def safe_print_list(my_list=[], x=0):
     count = 0
     try:
-        for idx, element in enumerate(my_list[:x]):
-            if idx < x - 1:
-                print(element, end="")
-            else:
-                print(element)
+        for i in range(x):
+            print("{}".format(my_list[i]), end="")
             count += 1
     except IndexError:
+        pass
+    finally:
         print()
-        return count
     return count
 
