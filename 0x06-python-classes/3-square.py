@@ -11,10 +11,12 @@ class Square:
 
     def size(self):
         """Retrieve the size of the square"""
+
         return self.__size
 
     def size(self, value):
         """Set the size of the square with validation checks"""
+
         if type(value) is not int:
             raise TypeError('size must be an integer')
         if value < 0:
@@ -23,5 +25,6 @@ class Square:
 
     def area(self):
         """Calculate the area of the square"""
+
         return self.__size ** 2
 
