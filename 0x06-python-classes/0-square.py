@@ -3,6 +3,8 @@
     This a simple class to define Square
 """
 class Square:
-    """Empty Square class"""
+    """
+        Empty Square class
+    """
     pass
 
