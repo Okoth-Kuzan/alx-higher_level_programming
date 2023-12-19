@@ -1,18 +1,18 @@
 #!/usr/bin/python3
+""" a class to define a size of square """
+
 
 class Square:
+    """Square implementation"""
+
     def __init__(self, size=0):
-        """
-        Initialize the Square instance with a size (default is 0)
-        """
+        """Initialize the Square instance with a size (default is 0)"""
         self.__size = size
 
-    @property
     def size(self):
         """Retrieve the size of the square"""
         return self.__size
 
-    @size.setter
     def size(self, value):
         """Set the size of the square with validation checks"""
         if type(value) is not int:
