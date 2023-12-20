@@ -1,67 +1,108 @@
 #!/usr/bin/python3
-"""
-This module defines a Square class
-Its implements value and type checks for its attributes
-Attributes:
-    area
-    my_print
-"""
+""" a class to define a size of square """
 
 
-class Square:
-    """Square implementation
+class Square():
+    """ a class to define and calculate area of the square
+    Args:
+        square1 (class): a class which define a square with size
     """
+
     def __init__(self, size=0, position=(0, 0)):
-        self.size = size
-        self.position = position
+        """initiationing square
 
-    def __str__(self):
+        Args:
+            size (int): the size of the square passed. Defaults to 0.
 
-        txt = ''
-        if (self.__size == 0):
-            pass
-        else:
-            for i in range(self.position[1]):
-                txt += '\n'
+        Raises:
+            TypeError: size must be an integer
+            ValueError: size must be >= 0
+        """
+        self.__size = size
+        self.__position = position
+        error = 'position must be a tuple of 2 positive integers'
 
-            for i in range(self.size):
-                txt += ' ' * self.position[0] + '#' * self.size
+        try:
+            if position[1]:
+                pass
+        except IndexError:
+            raise TypeError(error)
 
-        return txt
+        for pos in self.__position:
+            if type(pos) != int:
+                raise TypeError(error)
+            elif pos < 0:
+                raise TypeError(error)
+
+        if type(self.__size) != int:
+            raise TypeError('size must be an integer')
+        elif self.__size < 0:
+            raise ValueError('size must be >= 0')
 
     @property
     def size(self):
+        """getter for size
+
+        Returns:
+            integer: sends the value of private size
+        """
         return self.__size
 
     @size.setter
-    def size(self, size):
-        if type(size) != int:
+    def size(self, value):
+        """Setter for size
+
+        Args:
+            value (int): a new size value
+
+        Raises:
+            TypeError: if not integer
+            ValueError: if < 0
+        """
+
+        if type(value) != int:
             raise TypeError('size must be an integer')
-        elif size < 0:
+        elif value < 0:
             raise ValueError('size must be >= 0')
-        self.__size = size
+
+        self.__size = value
 
     def area(self):
-        """calculates the square area
+        """ finding the area of the square
+
+        Returns:
+            int: the are of the square
         """
-        return (self.size ** 2)
+        return self.__size**2
 
     def my_print(self):
-        """prints a square  with the corresponding size
-        """
-        print(self.__str__())
+        """printing the square"""
+        if self.__size == 0:
+            print()
+            return
+        print('\n'*self.__position[1], end="")
+        for i in range(self.__size):
+            for k in range(self.__position[0]):
+                print(' ', end="")
+            for j in range(self.__size):
+                print('#', end="")
+            print()
+
+    def __repr__(self):
+        string = ""
+        """printing the square"""
+        if self.__size == 0:
+            return string
+        print('\n'*self.__position[1], end="")
+        for i in range(self.__size):
+            for k in range(self.__position[0]):
+                string += ' '
+            for j in range(self.__size):
+                string += '#'
+            if i + 1 != self.__size:
+                string += '\n'
+        return string
 
     @property
     def position(self):
         return self.__position
-
-    @position.setter
-    def position(self, position):
-        if type(position) != tuple or \
-            len(position) != 2 or \
-            not all(isinstance(el, int) for el in position) or \
-                not all(el >= 0 for el in position):
-
-            raise TypeError('position must be a tuple of 2 positive integers')
-
-        self.__position = position
