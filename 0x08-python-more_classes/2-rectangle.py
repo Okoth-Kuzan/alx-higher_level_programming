@@ -1,48 +1,78 @@
 #!/usr/bin/python3
+
 """
-defines a class rectangle
+This is a Rectangle class.
 """
+
+
 class Rectangle:
-    """Class defining a Rectangle"""
+    """ Rectangle this is an empty class"""
 
     def __init__(self, width=0, height=0):
-        """Initialize the rectangle with width and height"""
-        self.__width = self.__validate_non_negative_int(width, "width")
-        self.__height = self.__validate_non_negative_int(height, "height")
-
-    def __validate_non_negative_int(self, value, attribute):
-        """Validates and returns a non-negative integer"""
-        if not isinstance(value, int):
-            raise TypeError(f"{attribute} must be an integer")
-        if value < 0:
-            raise ValueError(f"{attribute} must be >= 0")
-        return value
+        """
+        initialize instance of Rectangle
+        """
+        self.__width = width
+        self.__height = height
 
     @property
     def width(self):
-        """Getter method for width"""
+        """
+        getter method for width
+        """
+        if (not isinstance(self.__width, int)) or isinstance(self.__width,
+                                                             bool):
+            raise TypeError("width must be an integer")
+        if self.__width < 0:
+            raise ValueError("width must be >= 0")
         return self.__width
 
     @width.setter
-    def width(self, value):
-        """Setter method for width"""
-        self.__width = self.__validate_non_negative_int(value, "width")
+    def width(self, width):
+        """
+        setter method for width
+        """
+        if not isinstance(self.__width, int) or isinstance(self.__width, bool):
+            raise TypeError("width must be an integer")
+        if self.__width < 0:
+            raise ValueError("width must be >= 0")
+        self.__width = width
 
     @property
     def height(self):
-        """Getter method for height"""
+        """
+        getter method for height
+        """
+        if (not isinstance(self.__height, int)) or isinstance(self.__height,
+                                                              bool):
+            raise TypeError("height must be an integer")
+        if self.__height < 0:
+            raise ValueError("height must be >= 0")
         return self.__height
 
     @height.setter
-    def height(self, value):
-        """Setter method for height"""
-        self.__height = self.__validate_non_negative_int(value, "height")
+    def height(self, height):
+        """
+        setter method for height
+        """
+        if not isinstance(self.__height, int) or isinstance(self.__height,
+                                                            bool):
+            raise TypeError("height must be an integer")
+        if self.__height < 0:
+            raise ValueError("height must be >= 0")
+        self.__height = height
 
+    """
+    Calculate and returns area of Rectangle.
+    """
     def area(self):
-        """Calculates and returns the area of the rectangle"""
-        return self.__width * self.__height
+        return self.__height * self.__width
 
+    """
+    Calculate and returns perimeter of Rectangle object.
+    """
     def perimeter(self):
-        """Calculates and returns the perimeter of the rectangle"""
-        return 2 * (self.__width + self.__height) if self.__width != 0 and self.__height != 0 else 0
+        if self.__height == 0 or self.width == 0:
+            return 0
+        return (self.__height + self.width) * 2
 
