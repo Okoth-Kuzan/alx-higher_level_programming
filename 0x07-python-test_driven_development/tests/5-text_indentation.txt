@@ -1,0 +1,44 @@
+================================
+How to Use text_indentation.py
+================================
+
+This module defines a function ``text_indentation(text)`` to print a formatted text with new lines after specific characters.
+
+Usage
+=====
+
+``text_indentation(text)`` prints the formatted text with two new lines after each '.', '?' and ':' character.
+
+::
+
+    >>> text_indentation = __import__('text_indentation').text_indentation
+    >>> sample_text = "Hello. How are you? I am good: Thanks!"
+    >>> text_indentation(sample_text)
+    Hello
+    How are you
+    I am good
+    Thanks
+
+The function properly handles spaces after these characters.
+
+::
+
+    >>> sample_text = "Hello.  How are you?     I am good:   Thanks!"
+    >>> text_indentation(sample_text)
+    Hello
+    How are you
+    I am good
+    Thanks
+
+Invalid Inputs
+==================
+
+``text_indentation()`` expects the argument to be a string.
+If the argument is not a string, a TypeError is raised:
+
+::
+
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+

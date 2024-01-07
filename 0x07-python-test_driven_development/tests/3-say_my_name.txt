@@ -1,0 +1,54 @@
+==============================
+How to Use say_my_name.py
+==============================
+
+This module defines a function ``say_my_name(first_name, last_name='')`` to print a formatted name.
+
+Usage
+=====
+
+``say_my_name(first_name, last_name='')`` prints the formatted name using the provided first and last names.
+
+::
+
+    >>> say_my_name = __import__('say_my_name').say_my_name
+    >>> say_my_name("John", "Doe")
+    My name is John Doe
+
+The function also works if the last name is not provided.
+
+::
+
+    >>> say_my_name("Alice")
+    My name is Alice 
+
+Non-String Inputs
+==================
+
+``say_my_name()`` expects both arguments to be strings.
+If either argument is not a string, a TypeError is raised:
+
+::
+
+    >>> say_my_name(123, "Doe")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string or last_name must be a string
+
+::
+
+    >>> say_my_name("John", 456)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string or last_name must be a string
+
+::
+
+    >>> say_my_name(None, "Doe")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string or last_name must be a string
+
+::
+
+    >>> say_my_name("John", None)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string or last_name must be a string
+

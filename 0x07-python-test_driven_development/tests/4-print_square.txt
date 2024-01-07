@@ -1,0 +1,54 @@
+==============================
+How to Use print_square.py
+==============================
+
+This module defines a function ``print_square(size)`` to print a square using the character '#'.
+
+Usage
+=====
+
+``print_square(size)`` prints a square of the specified size using the character '#'.
+
+::
+
+    >>> print_square = __import__('print_square').print_square
+    >>> print_square(5)
+    #####
+    #####
+    #####
+    #####
+    #####
+
+The function works for different sizes of squares.
+
+::
+
+    >>> print_square(3)
+    ###
+    ###
+    ###
+
+Invalid Inputs
+==================
+
+``print_square()`` expects the argument to be a positive integer.
+If the argument is not an integer or is less than 0, appropriate errors are raised:
+
+::
+
+    >>> print_square("invalid")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+::
+
+    >>> print_square(-5)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+
+::
+
+    >>> print_square(3.5)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
